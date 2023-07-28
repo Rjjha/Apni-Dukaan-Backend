@@ -18,8 +18,8 @@ var gateway = new braintree.BraintreeGateway({
 
 const createProductController = async (req, res) => {
   try {
-    const { name, description, price, category, quantity, shipping } = req.body;
-    const { photo } = req.file;
+    const { name, description, price, category, quantity, shipping ,photo} = req.body;
+    //const { photo } = req.file;
     switch (true) {
       case !name: {
         return res.status(400).send({ message: "product name is required" });
@@ -74,8 +74,9 @@ const createProductController = async (req, res) => {
 //update product
 const updateProductController = async (req, res) => {
   try {
-    const { name, description, price, category, quantity, shipping } =req.body;
-    const { photo } = req.file;
+    const { name, description, price, category, quantity, shipping,photo } =req.body;
+    //const { photo } = req.file;
+    console.log(photo)
     switch (true) {
       case !name: {
         return res.status(400).send({ message: "product name is required" });
@@ -105,12 +106,16 @@ const updateProductController = async (req, res) => {
     const { id } = req.params;
     const single_product = await productModel.findById(id);
     await cloudinary.uploader.destroy(single_product.cloudinary_id);
-    const result = await cloudinary.uploader.upload(req.file.path);
+    let result;
+    if(req.file)
+    {
+      result = await cloudinary.uploader.upload(req.file.path);
+    }
     const product = await productModel.findByIdAndUpdate(id, {
       ...req.body,
       slug: slugify(name),
-      photo: result.secure_url || single_product.photo,
-      cloudinary_id: result.public_id || single_product.cloudinary_id,
+      photo: result?.secure_url || single_product.photo,
+      cloudinary_id: result?.public_id || single_product.cloudinary_id,
     });
     await product.save();
     res.status(201).send({

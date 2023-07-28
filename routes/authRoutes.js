@@ -1,5 +1,5 @@
 const express = require("express");
-const {registerController,loginController,testController,forgotPasswordController,updateProfileController} = require("../controllers/authController.js");
+const {registerController,loginController,testController,forgotPasswordController,updateProfileController,getOrdersController,getAllOrdersController,orderStatusController} = require("../controllers/authController.js");
 const {requireSignIn,isAdmin} = require("../middlewares/authMiddleware.js");
 
 const router = express.Router();
@@ -29,6 +29,17 @@ router.get('/admin-auth',requireSignIn,isAdmin,(req,res) =>{
 //update profile
 
 router.put("/profile",requireSignIn,updateProfileController);
+
+//orders
+router.get("/orders", requireSignIn, getOrdersController);
+
+//all orders
+
+router.get("/all-orders",requireSignIn,isAdmin,getAllOrdersController);
+ 
+//order status update
+
+router.put("/order-status/:orderId",requireSignIn,isAdmin,orderStatusController);
 
 
 

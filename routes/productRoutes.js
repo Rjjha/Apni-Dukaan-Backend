@@ -56,7 +56,6 @@ router.delete(
   requireSignIn,
   isAdmin,
   deleteProductController,
-  deleteProductController
 );
 
 //filter product
