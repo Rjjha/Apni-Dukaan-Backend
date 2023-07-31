@@ -94,5 +94,9 @@ Step-by-step instructions on how to congifure the project locally.
 4. **Cloudinary**
 5. **Braintree**
 
+## Contributing 
+
+You can contribute in this project by adding Rating and reviews section.
+
 
  
