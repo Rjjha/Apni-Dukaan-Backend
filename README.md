@@ -41,9 +41,9 @@ This is a E-commerce website MERN stack project is a full-fledged online shoppin
 
 List all the required dependencies and tools that need to be installed on the system. For example:
 
-- Node.js (version)
-- npm or yarn (version)
-- MongoDB (version)
+- Node.js 
+- npm or yarn 
+- MongoDB 
 
 ## Getting Started
 
@@ -102,7 +102,24 @@ Step-by-step instructions on how to congifure the project locally.
 - **PUT/category/update-category/:id** - Admin can change the category name by taking category id as req.params
 - **GET/category/get-category** - For fetching all the categories of products.
 - **GET/category/single-category/:slug** - Fetching single category by taking slug as params.
-- **DELETE/category/delete-category/:id** - Deleting single category by deleting id as params.
+- **DELETE/category/delete-category/:id** - Deleting single category by taking id as params.
+
+### Product
+- **POST/product/create-product** - Admin can create a new product by taking category name, photo,price,quantity, description as input.
+- **PUT/product/update-product/:id** - Admin can change the category_name ,price,photo etc by taking category id as req.params
+- **GET/product/get-category** - For fetching all the products in the databse.
+- **GET/product/single-product/:slug** - Fetching single product by taking slug as params.
+- **DELETE/product/delete-product/:id** - Deleting single product by taking id as params.
+- **GET/product/photo-product/:id** - For getting a single product photo by taking id as a params.
+- **POST/product/filter-product** - Takes filter parameters as input and give all the filtered items/products.
+- **GET/product/count-product** - Returns the total count of all products.
+- **GET/product/list-product/:page** - This api is used for pagination, returns products upto a certain amount.
+- **GET/product/search-product/:keyword** - Returns list of products which it gets from the keywords as a params.
+- **GET/product/related-product/:pid/:cid** - Returns a list of products similar to the category belongs to the product.
+- **GET/product/category-product/:slug** - Returns a list of products related to the same category.
+- **GET/product/braintree/token** - Gives the braintree client token for the payment.
+- **POST/product//braintree/payment** - This post request gets order from user after the payment.
+
 
 ## Technologies
 
