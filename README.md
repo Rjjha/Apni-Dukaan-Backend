@@ -96,7 +96,14 @@ Step-by-step instructions on how to congifure the project locally.
 
 ## Contributing 
 
-You can contribute in this project by adding Rating and reviews section.
+You can contribute in this project by adding Ratings and reviews section.
+
+## Licence 
+
+This project is licensed under the **MIT License.**
+
+## Contact
+You can contact me with my Linkedin Id : [Rajesh Jha]([GitHub Pages](https://pages.github.com/).
 
 
  
