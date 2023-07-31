@@ -1,8 +1,6 @@
 # Apni Dukaan Backend
 
-**Brief Description and Purpose of an E-commerce Website MERN Stack Project**
-
-The E-commerce website MERN stack project is a full-fledged online shopping platform built using the MERN (MongoDB, Express.js, React, and Node.js) stack. The purpose of this project is to create an efficient and user-friendly web application that enables customers to browse, search, and purchase products from a wide range of categories. It also provides sellers with the ability to list their products, manage inventory, and process orders.
+This is a E-commerce website MERN stack project is a full-fledged online shopping platform built using the MERN (MongoDB, Express.js, React, and Node.js) stack. The purpose of this project is to create an efficient and user-friendly web application that enables customers to browse, search, and purchase products from a wide range of categories. It also provides sellers with the ability to list their products, manage inventory, and process orders.
 
 **Key Features:**
 
@@ -25,7 +23,9 @@ The E-commerce website MERN stack project is a full-fledged online shopping plat
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Prerequisites](#prerequisites)
+- [Prerequisites](- Node.js (version)
+- npm or yarn (version)
+- MongoDB (version))
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Configuration](#configuration)
