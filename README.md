@@ -23,7 +23,8 @@ This is a E-commerce website MERN stack project is a full-fledged online shoppin
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Prerequisites](- Node.js (version)
+- [Prerequisites](#
+- Node.js (version)
 - npm or yarn (version)
 - MongoDB (version))
 - [Getting Started](#getting-started)
