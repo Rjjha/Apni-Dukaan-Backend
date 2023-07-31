@@ -80,8 +80,14 @@ Step-by-step instructions on how to congifure the project locally.
    PUBLIC_KEY = ************
    PRIVATE_KEY = ************
 
+ 2. Start the server:
+   ```bash
+   nodemon index.js
 
 
+## Getting Started
+
+Instructions for setting up the project on a local machine.
 
 ##Technologies
 ***Node.js***
