@@ -86,11 +86,13 @@ Step-by-step instructions on how to congifure the project locally.
 
 ## Technologies
 
-***Node.js***
-***Express.js***
-***MongoDB***
-***Cloudinary***
-***Braintree***
+**Major Technologies Used**
+
+1. **Node.js**
+2. **Express.js**
+3. **MongoDB**
+4. **Cloudinary**
+5. **Braintree**
 
 
  
