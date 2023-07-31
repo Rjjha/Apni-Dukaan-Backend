@@ -64,19 +64,19 @@ Step-by-step instructions on how to install the project locally.
    ```bash
    npm install
 
-   ### Configuration
+### Configuration
 
 1. Make a .env file and config with your own variables and key
   ```bash
-  PORT = 8000
+   PORT = 8000
    MONGO_URL = ************
    JWT_SECRET = ************
-  CLOUD_NAME = ************
-API_KEY = ************
-API_SECRET = ************
-MERCHANT_ID = ************
-PUBLIC_KEY = ************
-PRIVATE_KEY = ************
+   CLOUD_NAME = ************
+   API_KEY = ************
+   API_SECRET = ************
+   MERCHANT_ID = ************
+   PUBLIC_KEY = ************
+   PRIVATE_KEY = ************
  
 2. Start server
    ```bash
