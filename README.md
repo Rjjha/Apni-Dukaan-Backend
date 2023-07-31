@@ -68,7 +68,7 @@ Step-by-step instructions on how to install the project locally.
 
 Step-by-step instructions on how to congifure the project locally.
 
-1. Make a .env file and config with your own variables and key:
+1. Make an .env file and config with your own variables and key:
    ```bash
    PORT = 8000
    MONGO_URL = ************
@@ -80,12 +80,10 @@ Step-by-step instructions on how to congifure the project locally.
    PUBLIC_KEY = ************
    PRIVATE_KEY = ************
 
- 2. Start server:
-   ```bash
-   nodemon index.js```
 
 
-## Technologies
+
+##Technologies
 ***Node.js***
 ***Express.js***
 ***MongoDB***
