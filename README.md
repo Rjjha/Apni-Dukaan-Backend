@@ -96,6 +96,14 @@ Step-by-step instructions on how to congifure the project locally.
 - **GET /auth/all-orders** - Show all the orders to the admin
 - **PUT/auth/order-status/:orderId** - Admin Updates the orders status
 
+### Category 
+
+- **POST/category/create-category** - Admin can create a new category by taking category name as input.
+- **PUT/category/update-category/:id** - Admin can change the category name by taking category id as req.params
+- **GET/category/get-category** - For fetching all the categories of products.
+- **GET/category/single-category/:slug** - Fetching single category by taking slug as params.
+- **DELETE/category/delete-category/:id** - Deleting single category by deleting id as params.
+
 ## Technologies
 
 **Major Technologies Used**
