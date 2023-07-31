@@ -82,4 +82,13 @@ Step-by-step instructions on how to install the project locally.
    ```bash
    nodemon index.js
 
+### Technologies
+
+***Node.js***
+***Express.js***
+***MongoDB***
+***Cloudinary***
+***Braintree***
+
+
  
