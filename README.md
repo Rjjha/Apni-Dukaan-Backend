@@ -1,5 +1,6 @@
 # Apni Dukaan Backend
 
+This is a E-commerce website MERN stack project is a full-fledged online shopping platform built using the MERN (MongoDB, Express.js, React, and Node.js) stack. The purpose of this project is to create an efficient and user-friendly web application that enables customers to browse, search, and purchase products from a wide range of categories. It also provides sellers with the ability to list their products, manage inventory, and process orders.
 
 ## Table of Contents
 
@@ -19,8 +20,6 @@
 - [Contact](#contact)
 
 ## Project Overview
-
-This is a E-commerce website MERN stack project is a full-fledged online shopping platform built using the MERN (MongoDB, Express.js, React, and Node.js) stack. The purpose of this project is to create an efficient and user-friendly web application that enables customers to browse, search, and purchase products from a wide range of categories. It also provides sellers with the ability to list their products, manage inventory, and process orders.
 
 **Key Features:**
 
@@ -59,7 +58,13 @@ Step-by-step instructions on how to install the project locally.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/Rjjha/Apni-Dukaan-Backend
    cd your-repo
+2. Install dependencies:
+   ```bash
+   npm install
+3. Start server
+   ```bash
+   nodemon index.js
 
  
