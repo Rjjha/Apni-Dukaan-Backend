@@ -11,9 +11,6 @@ This is a E-commerce website MERN stack project is a full-fledged online shoppin
   - [Configuration](#configuration)
 - [API Documentation](#api-documentation)
   - [API List](#api-list)
-    - [1. Endpoint Name](#1-endpoint-name)
-    - [2. Endpoint Name](#2-endpoint-name)
-    - [3. Endpoint Name](#3-endpoint-name)
 - [Technologies](#technologies)
 - [Contributing](#contributing)
 - [License](#license)
@@ -83,6 +80,21 @@ Step-by-step instructions on how to congifure the project locally.
    ```bash
    nodemon index.js
 
+## Api Documentation
+
+## API Endpoints
+
+### Auth
+
+- **POST /auth/login** - Takes username and password as parameters and returns JWT.
+- **POST /auth/register** - Providing name, username, password, email, phone no and adddress would add a new user into the database.
+- **POST /auth/forgot-password** - Takes a fav book, email as input and change password.
+- **GET /auth/user-auth** - Takes authorization header and authorize the user.
+- **GET /auth/admin-auth** - Takes authorization header with role and authorize the admin.
+- **PUT/auth/profile** - Updates the User profile
+- **GET /auth/orders** - Show orders of specific User
+- **GET /auth/all-orders** - Show all the orders to the admin
+- **PUT/auth/order-status/:orderId** - Admin Updates the orders status
 
 ## Technologies
 
