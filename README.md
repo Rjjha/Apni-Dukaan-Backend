@@ -82,10 +82,10 @@ Step-by-step instructions on how to congifure the project locally.
 
  2. Start server:
    ```bash
-   nodemon index.js
+   nodemon index.js```
 
-### Technologies
 
+## Technologies
 ***Node.js***
 ***Express.js***
 ***MongoDB***
