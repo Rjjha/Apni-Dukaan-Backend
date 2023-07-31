@@ -103,7 +103,7 @@ You can contribute in this project by adding Ratings and reviews section.
 This project is licensed under the **MIT License.**
 
 ## Contact
-You can contact me with my Linkedin Id : [Rajesh Jha]([GitHub Pages](https://pages.github.com/).
+You can contact me with my Linkedin Id : [Rajesh Jha](https://www.linkedin.com/in/rajesh-jha-0aa47a205/).
 
 
  
