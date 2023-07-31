@@ -77,8 +77,10 @@ Step-by-step instructions on how to install the project locally.
    MERCHANT_ID = ************
    PUBLIC_KEY = ************
    PRIVATE_KEY = ************
+
+
  
-2. Start server
+ 2. Start server
    ```bash
    nodemon index.js
 
