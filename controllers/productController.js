@@ -267,7 +267,7 @@ const productCountController = async(req,res) =>{
 //product list controller
  const productListController = async(req,res) =>{
   try {
-    const perPage = 6;
+    const perPage = 12;
     const page = req.params.page ? req.params.page :1;
     const products = await productModel.find({}).skip((page-1) * perPage).limit(perPage).sort({createdAt:-1});
     res.status(200).send({
