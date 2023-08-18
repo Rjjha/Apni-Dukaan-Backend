@@ -15,6 +15,7 @@ const {
   categoryProductController,
   braintreeTokenController,
   braintreePaymentController,
+  sortProductController,
 } = require("../controllers/productController");
 const upload = require("../utils/multer");
 
@@ -60,6 +61,9 @@ router.delete(
 
 //filter product
 router.post("/filter-product", productFilterController);
+
+//sort product
+router.post("/sort-product",sortProductController);
 
 //product count route
 router.get("/count-product", productCountController);

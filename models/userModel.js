@@ -23,7 +23,6 @@ const UserSchema = new mongoose.Schema({
     },
     question:{
         type:String,
-        required: true,
     },
     role:{
         type:Number,

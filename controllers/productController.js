@@ -140,7 +140,7 @@ const getProductController = async (req, res) => {
       .find({})
       .populate("category")
       .limit(12)
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 ,price:1 });
     res.status(201).send({
       success: true,
       message: "All Products",
@@ -200,7 +200,7 @@ const deleteProductController = async (req, res) => {
     const {id} = req.params;
     const product= await productModel.findById(id);
     // Delete image from cloudinary
-    await cloudinary.uploader.destroy(product.cloudinary_id);
+    await cloudinary.uploader.destroy(product?.cloudinary_id);
     // Delete user from db
     await productModel.findOneAndDelete(id);
     return res.status(200).send({
@@ -221,7 +221,7 @@ const deleteProductController = async (req, res) => {
 const productFilterController = async (req, res) => {
   try {
     const {checked,radio} = req.body;
-    let args = { }
+    let args = { };
     if(checked.length > 0)
     {
         args.category = checked;
@@ -234,7 +234,7 @@ const productFilterController = async (req, res) => {
     res.status(200).send({
       success:true,
       message:"filtered successful",
-      products
+      products,
     })
   } catch (error) {
     console.log(error);
@@ -245,6 +245,67 @@ const productFilterController = async (req, res) => {
     });
   }
 };
+
+//product sort controller
+const sortProductController = async(req,res) =>{
+  try {
+    let {sort, page ,checked, radio} = req.body;
+    const perPage = 6;
+    const pages = page ? page :1;
+    let args = {};
+    if(checked.length > 0)
+    {
+        args.category = checked;
+    }
+    if(radio.length)
+    {
+       args.price = {$gte: radio[0],$lte: radio[1]}
+    }
+    if(sort === "")
+    {
+      sort = "price-lowest";
+    }
+    let products=[];
+    let count=0;
+    if(sort === "price-lowest")
+    {
+      const sort_prod = { price: 1,createdAt:-1 };
+      count = await productModel.find(args).countDocuments();
+      products = await productModel.find(args).skip((pages-1) * perPage).limit(perPage).sort(sort_prod);
+    }
+    else if(sort === "price-highest")
+    {
+      const sort_prod = { price: -1,createdAt:-1 };
+      count = await productModel.find(args).countDocuments();
+      products = await productModel.find(args).skip((pages-1) * perPage).limit(perPage).sort(sort_prod);
+    }
+    else if(sort === "name-a")
+    {
+      const sort_prod = { slug: 1,createdAt:-1 };
+      count = await productModel.find(args).countDocuments();
+      products = await productModel.find(args).skip((pages-1) * perPage).limit(perPage).sort(sort_prod);
+    }
+    else if(sort === "name-z")
+    {
+      const sort_prod = { slug: -1,createdAt:-1 };
+      count = await productModel.find(args).countDocuments();
+      products = await productModel.find(args).skip((pages-1) * perPage).limit(perPage).sort(sort_prod);
+    }
+    res.status(200).send({
+      success:true,
+      message:"Sorting successful",
+      products,
+      count
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Sorting product",
+      error,
+    });
+  }
+}
 
 //product count controller
 const productCountController = async(req,res) =>{
@@ -267,9 +328,10 @@ const productCountController = async(req,res) =>{
 //product list controller
  const productListController = async(req,res) =>{
   try {
-    const perPage = 12;
+    const perPage = 6;
     const page = req.params.page ? req.params.page :1;
-    const products = await productModel.find({}).skip((page-1) * perPage).limit(perPage).sort({createdAt:-1});
+    const sort_prod = { price: 1,createdAt:-1 };
+    const products = await productModel.find({}).skip((page-1) * perPage).limit(perPage).sort(sort_prod);
     res.status(200).send({
       success:true,
       products,
@@ -402,6 +464,7 @@ module.exports = {
   deleteProductController,
   updateProductController,
   productFilterController,
+  sortProductController,
   productCountController,
   productListController,
   searchProductController,

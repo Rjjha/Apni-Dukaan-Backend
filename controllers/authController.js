@@ -1,5 +1,6 @@
 const userModel = require("../models/userModel");
 const orderModel = require("../models/orderModel");
+const feedbackModel = require("../models/feedbackModel");
 const { hashPassword, comparePassword } = require("../helpers/authHelper");
 const JWT = require("jsonwebtoken");
 
@@ -13,17 +14,8 @@ const registerController = async (req, res) => {
     if (!email) {
       return res.send({ message: "Email is required" });
     }
-    if (!phone) {
-      return res.send({ message: "Phone No. is required" });
-    }
     if (!password) {
       return res.send({ message: "password is required" });
-    }
-    if (!address) {
-      return res.send({ error: "address is required" });
-    }
-    if (!question) {
-      return res.send({ error: "Security question is required" });
     }
 
     //existing user check
@@ -40,15 +32,25 @@ const registerController = async (req, res) => {
     const user = await new userModel({
       name,
       email,
-      phone,
+      phone: "",
       password: hashedPassword,
-      question,
-      address,
+      question: "",
+      address: "",
     }).save();
+    const token = JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
     res.status(201).send({
       success: true,
       message: "Register Successfull",
-      user,
+      user: {
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        address: user.address,
+        role: user.role,
+      },
+      token,
     });
   } catch (error) {
     console.log(error);
@@ -168,7 +170,9 @@ const updateProfileController = async (req, res) => {
 
     //check user is present or not
     const existing_user = await userModel.findOne({ email });
-    const hashed = password ? await hashPassword(password) : existing_user.password;
+    const hashed = password
+      ? await hashPassword(password)
+      : existing_user.password;
     const user = await userModel.findByIdAndUpdate(
       existing_user._id,
       {
@@ -214,7 +218,7 @@ const getOrdersController = async (req, res) => {
 };
 
 //orders
-const getAllOrdersController = async(req,res) =>{
+const getAllOrdersController = async (req, res) => {
   try {
     const orders = await orderModel
       .find({})
@@ -254,6 +258,81 @@ const orderStatusController = async (req, res) => {
   }
 };
 
+const googleSignController = async (req, res) => {
+  try {
+    const { name, email} = req.body;
+      const user = await userModel.findOne({email});
+      if (user) {
+        const token = JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
+          expiresIn: "7d",
+        });
+         return res.status(200).send({
+          success: true,
+          message: "login successfull",
+          user: {
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            address: user.address,
+            role: user.role,
+          },
+          token,
+        });
+      } else {
+        const pass = email + process.env.JWT_SECRET;
+        const hashedPassword = await hashPassword(pass);
+        const user = await new userModel({
+          name,
+          email,
+          password: hashedPassword,
+          phone: "",
+          question: "",
+          address: "",
+        }).save();
+        const token = JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
+          expiresIn: "7d",
+        });
+        return res.status(201).send({
+          success: true,
+          message: "Register Successfull",
+          user: {
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            address: user.address,
+            role: user.role,
+          },
+          token,
+        });
+      }
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: error?.message || error,
+    });
+  }
+};
+
+//const feedback
+const feedbackController = async(req,res) =>{
+  try {
+    const {feedback} = req.body;
+    await new feedbackModel({
+      feedback:feedback,
+      user:req.user._id,
+    }).save()
+    return res.status(200).send({
+      message:"Thanks for Giving your Feedback",
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: error?.message || error,
+    });
+  }
+}
+
 module.exports = {
   registerController,
   loginController,
@@ -262,5 +341,7 @@ module.exports = {
   updateProfileController,
   getOrdersController,
   getAllOrdersController,
-  orderStatusController
-}
+  orderStatusController,
+  googleSignController,
+  feedbackController,
+};

@@ -1,11 +1,14 @@
 const express = require("express");
-const {registerController,loginController,testController,forgotPasswordController,updateProfileController,getOrdersController,getAllOrdersController,orderStatusController} = require("../controllers/authController.js");
+const {registerController,loginController,testController,forgotPasswordController,updateProfileController,getOrdersController,getAllOrdersController,orderStatusController,googleSignController,feedbackController} = require("../controllers/authController.js");
 const {requireSignIn,isAdmin} = require("../middlewares/authMiddleware.js");
 
 const router = express.Router();
 
 //routing | Method post
 router.post("/register",registerController);
+
+//routing | Goggle Signin
+router.post("/google_sign",googleSignController);
 
 //login route
 router.post("/login",loginController);
@@ -40,6 +43,9 @@ router.get("/all-orders",requireSignIn,isAdmin,getAllOrdersController);
 //order status update
 
 router.put("/order-status/:orderId",requireSignIn,isAdmin,orderStatusController);
+
+//feedback
+router.post("/feedback",requireSignIn,feedbackController);
 
 
 
