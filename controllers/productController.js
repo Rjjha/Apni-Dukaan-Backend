@@ -139,7 +139,6 @@ const getProductController = async (req, res) => {
     const products = await productModel
       .find({})
       .populate("category")
-      .limit(12)
       .sort({ createdAt: -1 ,price:1 });
     res.status(201).send({
       success: true,
